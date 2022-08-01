@@ -3,6 +3,7 @@ package com.app.easy2excel.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,23 +50,18 @@ public class ContactService {
 	}
 
 	public List<ContactDTO> getContactList() {
-		List<Contact> contactList = contactRepository.findAll();
 		
-		List<ContactDTO> resultList = new ArrayList<>();
-		if(!contactList.isEmpty()) {
+		return contactRepository.findAll().stream().map(contact ->{
 			
-			contactList.forEach(contact->{
-				
-				ContactDTO  contactDTO = new ContactDTO();
-				contactDTO.setId(contact.getId());
-				contactDTO.setFirstName(contact.getFirstName());
-				contactDTO.setLastName(contact.getLastName());
-				contactDTO.setEmail(contact.getEmail());
-				contactDTO.setPhoneNo(contact.getPhoneNo());
-				resultList.add(contactDTO);
-			});
-		}
-		return resultList;
+			ContactDTO  contactDTO = new ContactDTO();
+			contactDTO.setId(contact.getId());
+			contactDTO.setFirstName(contact.getFirstName());
+			contactDTO.setLastName(contact.getLastName());
+			contactDTO.setEmail(contact.getEmail());
+			contactDTO.setPhoneNo(contact.getPhoneNo());
+			return contactDTO ;
+		}).collect(Collectors.toList());
+		
 	}
 	 
 	 
