@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.app.easy2excel.dto.ContactDTO;
 import com.app.easy2excel.entity.Contact;
+import com.app.easy2excel.mapper.ContactMapper;
 import com.app.easy2excel.repository.ContactRepository;
 
 @Service
@@ -17,22 +18,27 @@ public class ContactService {
 	
 	 @Autowired
 	 ContactRepository contactRepository;
+	 
+	 @Autowired
+	 ContactMapper contactMapper;
 	
 	public Contact saveContact(ContactDTO contactDTO) {
 
-		Contact contact = new Contact();
-		contact.setFirstName(contactDTO.getFirstName());
-		contact.setLastName(contactDTO.getLastName());
-		contact.setEmail(contactDTO.getEmail());
-		contact.setPhoneNo(contactDTO.getPhoneNo());
-		
-		return contactRepository.save(contact);
-
+		/*
+		 * Contact contact = new Contact();
+		 * contact.setFirstName(contactDTO.getFirstName());
+		 * contact.setLastName(contactDTO.getLastName());
+		 * contact.setEmail(contactDTO.getEmail());
+		 * contact.setPhoneNo(contactDTO.getPhoneNo());
+		 * 
+		 * return contactRepository.save(contact);
+		 */
+		return contactRepository.save(contactMapper.toEntity(contactDTO));
 	}
 
 	public ContactDTO getContactById(Long id) {
 
-		Optional<Contact> contact = contactRepository.findById(id);
+		/*Optional<Contact> contact = contactRepository.findById(id);
 	    ContactDTO  contactDTO = new ContactDTO();
 		if(contact.isPresent()) {
 			
@@ -43,15 +49,18 @@ public class ContactService {
 			contactDTO.setPhoneNo(contact.get().getPhoneNo());
 		}
 				
-		return contactDTO;
-
+		return contactDTO;*/
+		
+		return contactRepository.findById(id)
+                .map(contactMapper::toDTO)
+                .orElse(new ContactDTO());
 		
 	
 	}
 
 	public List<ContactDTO> getContactList() {
 		
-		return contactRepository.findAll().stream().map(contact ->{
+		/*return contactRepository.findAll().stream().map(contact ->{
 			
 			ContactDTO  contactDTO = new ContactDTO();
 			contactDTO.setId(contact.getId());
@@ -60,7 +69,10 @@ public class ContactService {
 			contactDTO.setEmail(contact.getEmail());
 			contactDTO.setPhoneNo(contact.getPhoneNo());
 			return contactDTO ;
-		}).collect(Collectors.toList());
+		}).collect(Collectors.toList());*/
+		
+	List<Contact> contacts = 	contactRepository.findAll();
+	return  contactMapper.toDTOList(contacts);
 		
 	}
 	 
