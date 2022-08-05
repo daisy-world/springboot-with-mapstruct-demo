@@ -20,4 +20,7 @@ public interface EmployeeMapper {
 	@Mapping(source = "department.deptName",target = "departmentDTO.deptName")
 
 	EmployeeDTO toDTO(Employee employee);
+	
+	
+	
 }
