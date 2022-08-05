@@ -24,12 +24,11 @@ public class EmployeeService {
 	}
 
 	public EmployeeDTO getEmployeeById(Long id) {
-		
-		Optional<Employee> emp = employeeRepository.findById(id);
-		if(emp.isPresent()) {
-			return employeeMapper.toDTO(emp.get(), emp.get().getDepartment());
-		}
-		return new EmployeeDTO();
+		return employeeRepository.findById(id)
+	             .map(employeeMapper::toDTO )
+	             .orElse(new EmployeeDTO());
 	}
+
+	
 
 }

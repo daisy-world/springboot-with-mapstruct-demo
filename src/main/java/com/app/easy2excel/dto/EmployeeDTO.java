@@ -9,6 +9,6 @@ public class EmployeeDTO {
 	private String empName;
 	private String email;
 	private float salary;
-	private String deptName;
+	private DepartmentDTO departmentDTO;
 	
 }

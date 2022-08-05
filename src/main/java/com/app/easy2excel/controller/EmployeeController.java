@@ -23,9 +23,9 @@ public class EmployeeController {
 		return ResponseEntity.ok(employeeService.saveEmployee(employeeDTO));
 	}
 
-	@GetMapping("/employee/{id}")
-	public ResponseEntity<EmployeeDTO> getEmployeeById(@PathVariable Long id) {
-		return ResponseEntity.ok(employeeService.getEmployeeById(id));
-	}
+	 @GetMapping("/employee/{id}")
+		public ResponseEntity<EmployeeDTO> getEmployeeById(@PathVariable Long id) {
+			return ResponseEntity.ok(employeeService.getEmployeeById(id));
+		}
 
 }
