@@ -7,9 +7,10 @@ import com.app.easy2excel.entity.Department;
 
 @Mapper(componentModel = "spring")
 public interface DepartmentMapper {
-
+	
 	Department toEntity(DepartmentDTO departmentDTO);
 	
 	DepartmentDTO toDTO(Department department);
-	
+
+
 }

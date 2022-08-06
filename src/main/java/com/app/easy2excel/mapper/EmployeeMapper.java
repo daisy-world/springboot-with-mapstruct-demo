@@ -4,21 +4,22 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 import com.app.easy2excel.dto.EmployeeDTO;
+import com.app.easy2excel.entity.Department;
 import com.app.easy2excel.entity.Employee;
 
 @Mapper(componentModel = "spring",uses= {DepartmentMapper.class})
 public interface EmployeeMapper {
 
-	@Mapping(source = "empId", target = "id")
-	@Mapping(source = "empName", target = "name")
-	@Mapping(source = "departmentDTO.deptName", target = "department.deptName")
-	
+	@Mapping(source="empName",target="name")
+	@Mapping(source="empId",target="id")
+	//@Mapping(source="departmentName",target="department.deptName") // when departmentName is a direct field inside EmployeeDTO
+	@Mapping(source="departmentDTO",target="department")
 	Employee toEntity(EmployeeDTO employeeDTO);
 	
-	@Mapping(source = "id", target = "empId")
-	@Mapping(source = "name", target = "empName")
-	@Mapping(source = "department.deptName",target = "departmentDTO.deptName")
-
+	@Mapping(source="name",target="empName")
+	@Mapping(source="id",target="empId")
+	//@Mapping(source="department.deptName",target="departmentName")// when departmentName is a direct field inside EmployeeDTO
+	@Mapping(source="department",target="departmentDTO")
 	EmployeeDTO toDTO(Employee employee);
 	
 	
