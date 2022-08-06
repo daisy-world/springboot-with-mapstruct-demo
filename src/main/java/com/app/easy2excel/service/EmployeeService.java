@@ -1,6 +1,5 @@
 package com.app.easy2excel.service;
 
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +22,8 @@ public class EmployeeService {
 	 
 	 @Autowired
 	 EmployeeDetailsMapper employeeDetailsMapper;
-	
+	 
+		
 	public Employee saveEmployee(EmployeeDTO employeeDTO) {
 		return employeeRepository.save(employeeMapper.toEntity(employeeDTO));
 	}
@@ -35,11 +35,11 @@ public class EmployeeService {
 	}
 
 	public EmployeeDetailsDTO getEmployeeDetailsById(Long id) {
-		Optional<Employee> emp = employeeRepository.findById(id);
-		if(emp.isPresent()) {
-			return employeeDetailsMapper.toEmployeeDetailsDTO(emp.get(), emp.get().getDepartment());
-		}
-		return new EmployeeDetailsDTO();
+		 return employeeRepository.findById(id).
+		                   map(emp->{
+		                	  return employeeDetailsMapper.toEmployeeDetailsDTO(emp, emp.getDepartment());   
+		                   }).orElse(new EmployeeDetailsDTO());
+				
 	}
 
 

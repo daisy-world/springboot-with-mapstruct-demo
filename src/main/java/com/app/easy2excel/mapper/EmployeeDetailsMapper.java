@@ -9,12 +9,11 @@ import com.app.easy2excel.entity.Employee;
 
 @Mapper(componentModel = "spring")
 public interface EmployeeDetailsMapper {
-
+	
 	@Mapping(source = "employee.id", target = "empId")
 	@Mapping(source = "employee.name", target = "empName")
 	@Mapping(source = "department.deptName", target = "deptName")
 	@Mapping(source = "department.id", target = "deptId")
-
-	EmployeeDetailsDTO toEmployeeDetailsDTO(Employee employee, Department department);
+	EmployeeDetailsDTO toEmployeeDetailsDTO(Employee employee,Department department);
 
 }
