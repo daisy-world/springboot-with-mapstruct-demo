@@ -9,5 +9,7 @@ public class EmployeeDetailsDTO {
 	private String empName;
 	private String email;
 	private float salary;
+	private String deptId;
 	private String deptName;
+
 }
