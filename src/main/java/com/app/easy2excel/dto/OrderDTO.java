@@ -13,5 +13,7 @@ public class OrderDTO {
 	
 	private String orderDate;
 	
+	private String orderStatus;
+	
 	
 }
