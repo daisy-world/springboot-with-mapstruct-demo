@@ -4,7 +4,6 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 import com.app.easy2excel.dto.EmployeeDTO;
-import com.app.easy2excel.entity.Department;
 import com.app.easy2excel.entity.Employee;
 
 @Mapper(componentModel = "spring",uses= {DepartmentMapper.class})
