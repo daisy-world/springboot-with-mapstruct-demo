@@ -10,6 +10,8 @@ import com.app.easy2excel.dto.PaymentViewType;
 import com.app.easy2excel.dto.TransactionDTO;
 import com.app.easy2excel.dto.TransactionViewDTO;
 
+// Mapping Enum
+
 @Mapper(componentModel = "spring")
 public interface TransactionMapper {
 

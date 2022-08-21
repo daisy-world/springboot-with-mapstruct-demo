@@ -6,6 +6,8 @@ import org.mapstruct.Mapping;
 import com.app.easy2excel.dto.EmployeeDTO;
 import com.app.easy2excel.entity.Employee;
 
+/*mapping child entities*/
+
 @Mapper(componentModel = "spring",uses= {DepartmentMapper.class})
 public interface EmployeeMapper {
 

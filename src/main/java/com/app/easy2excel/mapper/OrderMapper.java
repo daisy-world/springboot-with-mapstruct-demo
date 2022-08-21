@@ -11,6 +11,9 @@ import org.mapstruct.Named;
 import com.app.easy2excel.dto.OrderDTO;
 import com.app.easy2excel.entity.Order;
 
+//@AfterMapping & @BeforeMapping
+// Mapping with custom method
+
 @Mapper(componentModel = "spring")
 public interface OrderMapper {
 

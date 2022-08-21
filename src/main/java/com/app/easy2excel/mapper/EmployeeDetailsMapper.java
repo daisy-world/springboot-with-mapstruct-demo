@@ -7,6 +7,7 @@ import com.app.easy2excel.dto.EmployeeDetailsDTO;
 import com.app.easy2excel.entity.Department;
 import com.app.easy2excel.entity.Employee;
 
+/*mapping multiple sources*/
 @Mapper(componentModel = "spring")
 public interface EmployeeDetailsMapper {
 	

@@ -8,6 +8,8 @@ import org.mapstruct.Mapping;
 import com.app.easy2excel.dto.UserDTO;
 import com.app.easy2excel.entity.User;
 
+// Mapping beans with different field name
+
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 
